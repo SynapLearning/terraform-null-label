@@ -1,11 +1,13 @@
 output "id" {
   value       = local.enabled ? local.id : ""
   description = "Disambiguated ID restricted to `id_length_limit` characters in total"
+  sensitive   = true
 }
 
 output "id_full" {
   value       = local.enabled ? local.id_full : ""
   description = "Disambiguated ID not restricted in length"
+  sensitive   = true
 }
 
 output "enabled" {
@@ -16,6 +18,7 @@ output "enabled" {
 output "namespace" {
   value       = local.enabled ? local.namespace : ""
   description = "Normalized namespace"
+  sensitive   = true
 }
 
 output "environment" {
@@ -46,6 +49,7 @@ output "attributes" {
 output "tags" {
   value       = local.enabled ? local.tags : {}
   description = "Normalized Tag map"
+  sensitive   = true
 }
 
 output "additional_tag_map" {
@@ -71,15 +75,18 @@ output "id_length_limit" {
 output "tags_as_list_of_maps" {
   value       = local.tags_as_list_of_maps
   description = "Additional tags as a list of maps, which can be used in several AWS resources"
+  sensitive   = true
 }
 
 output "normalized_context" {
   value       = local.output_context
   description = "Normalized context of this module"
+  sensitive   = true
 }
 
 output "context" {
   value       = local.input
+  sensitive   = true
   description = <<-EOT
   Merged but otherwise unmodified input to this module, to be used as context input to other modules.
   Note: this version will have null values as defaults, not the values actually used as defaults.
